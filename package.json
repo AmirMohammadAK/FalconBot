@@ -1,0 +1,48 @@
+{
+  "name": "server",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "./bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js",
+    "bot": "nodemon src/bot.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.16.2",
+    "@telegraf/session": "^2.0.0-beta.7",
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
+    "better-sqlite3": "^9.6.0",
+    "cors": "^2.8.5",
+    "cron": "^3.1.7",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "i18n-telegraf": "^8.6.9",
+    "i18next": "^23.12.2",
+    "i18next-fs-backend": "^2.3.1",
+    "i18next-http-middleware": "^3.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "kysely": "^0.27.2",
+    "moment-timezone": "^0.5.45",
+    "node-cron": "^3.0.3",
+    "nodemon": "^3.1.4",
+    "nvm": "^0.0.4",
+    "redis": "^4.6.15",
+    "telegraf": "^4.16.3",
+    "url": "^0.11.3",
+    "whatwg-url": "^14.0.0",
+    "winston": "^3.13.1",
+    "winston-timestamp-colorize": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11"
+  }
+}

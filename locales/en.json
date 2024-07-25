@@ -1,0 +1,40 @@
+{
+  "clients": {
+    "updated": "Clients updated successfully"
+  },
+  "bot": {
+    "welcome": {
+      "dec": "*Welcome to Falcon Bot 👋*",
+      "buttons": {
+        "buy": "🛒 Buy Service",
+        "services": "🛍️ My Services",
+        "wallet": "💰 Wallet & Charge",
+        "price": "💎 Price of Services",
+        "instruction": "📚 Instruction",
+        "support": "🧑‍💻 Support",
+        "language": "🇮🇷 فارسی",
+        "back": "🏠 Back to Menu"
+      }
+    },
+    "instruction": {
+      "dec": "📋 Select your device to get instruction",
+      "android": "📱 Android",
+      "iphone": "📱 Iphone",
+      "windows": "💻 Windows",
+      "mac": "💻 Mac"
+    },
+    "info": {
+      "dec": "Please Send your Config or Uuid to get information",
+      "client_info": "👤 Name : ${name}\n💡 Status : ${status}\n📆 Expiration : ${expiration}\n🗓️ Remaining : ${remaining}\n🔄 Total traffic : ${totalTraffic}\n🔀 Remaining traffic : ${remainingTraffic}\n↕️ Total usage : ${TotalUsage}\n⬇️ Download : ${download}\n⬆️ Upload : ${upload}\n📍Limit Ip : ${limitIp}\n🌐 Connected Ips : ${ConnectedIps}\n⏰ Updated in : ${time}",
+      "status_active": "Active",
+      "status_inactive": "Inactive",
+      "unlimited": "Unlimited"
+    },
+    "error": "An error occurred: ${error}",
+    "answerQuery": {
+      "change_language": "✅ Language changed successfully",
+      "instruction": "✅ Instruction sent successfully",
+      "back_menu": "✅ Back to menu successfully"
+    }
+  }
+}

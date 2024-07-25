@@ -1,0 +1,43 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = "file:../src/database/falcon.db"
+}
+
+model Panel {
+    key      String   @unique
+    host     String
+    username String
+    password String
+    port     String
+    path     String?  @default("/")
+    session  String?
+    subPort  String
+    subPath  String?  @default("/")
+    enable   Boolean? @default(true)
+}
+
+model Client {
+    key      String   @unique
+    email             String
+    uuid              String
+    enable            Boolean
+    limitIp           Int
+    ipsCount          Int
+    totalGB           String
+    downGB            String
+    upGB              String
+    consumedVolumeGB  String
+    remainingVolumeGB String
+    expirationDay     String
+    remainingTime     String
+    config            String
+}
+
+model User {
+    username String @unique
+    password String
+}
