@@ -6,6 +6,7 @@ import { SQLite } from "@telegraf/session/sqlite";
 import { getClient } from "./clients/clientsServices.js";
 import moment from "moment-timezone";
 import { message } from "telegraf/filters";
+import { getInbounds } from "./inbounds/inboundsServices.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -89,6 +90,34 @@ bot.start((ctx) => {
   sendMenu(ctx);
 });
 
+bot.action("back_menu", async (ctx) => {
+  sendMenu(ctx, "edit");
+  ctx.answerCbQuery(ctx.i18n.t("bot.answerQuery.back_menu"));
+});
+
+// buy service
+bot.action("buy_service", async (ctx) => {
+  try {
+    const inbounds = await getInbounds();
+
+    const keyboard = Markup.inlineKeyboard(
+      inbounds.map((inbound) => [
+        Markup.button.callback(
+          inbound.name,
+          `buy_inbound_${inbound.host}_${inbound.id}`
+        ),
+      ])
+    );
+
+    await ctx.reply("Please select an inbound:", keyboard);
+  } catch (error) {
+    console.error("Error fetching inbounds:", error.message);
+    await ctx.reply(
+      "Sorry, an error occurred while fetching the services. Please try again later."
+    );
+  }
+});
+
 // change language
 bot.action("change_language", async (ctx) => {
   const lang = ctx.i18n.locale();
@@ -138,10 +167,6 @@ bot.action("instruction", async (ctx) => {
   ctx.answerCbQuery(ctx.i18n.t("bot.answerQuery.instruction"));
 });
 
-bot.action("back_menu", async (ctx) => {
-  sendMenu(ctx, "edit");
-  ctx.answerCbQuery(ctx.i18n.t("bot.answerQuery.back_menu"));
-});
 // check Info
 let pendingCheck = null;
 
