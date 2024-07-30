@@ -1,43 +1,54 @@
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = "file:../src/database/falcon.db"
+  provider = "sqlite"
+  url      = "file:../src/database/falcon.db"
 }
 
 model Panel {
-    key      String   @unique
-    host     String
-    username String
-    password String
-    port     String
-    path     String?  @default("/")
-    session  String?
-    subPort  String
-    subPath  String?  @default("/")
-    enable   Boolean? @default(true)
+  key      String   @id
+  host     String
+  username String
+  password String
+  port     String
+  path     String?  @default("/")
+  session  String?
+  subPort  String
+  subPath  String?  @default("/")
+  enable   Boolean? @default(true)
+
+  inbounds Inbound[]
+}
+
+model Inbound {
+  id       String
+  name     String
+  panelKey String
+  panel    Panel  @relation(fields: [panelKey], references: [key])
+
+  @@unique([panelKey, id])
 }
 
 model Client {
-    key      String   @unique
-    email             String
-    uuid              String
-    enable            Boolean
-    limitIp           Int
-    ipsCount          Int
-    totalGB           String
-    downGB            String
-    upGB              String
-    consumedVolumeGB  String
-    remainingVolumeGB String
-    expirationDay     String
-    remainingTime     String
-    config            String
+  key               String  @unique
+  email             String
+  uuid              String
+  enable            Boolean
+  limitIp           Int
+  ipsCount          Int
+  totalGB           String
+  downGB            String
+  upGB              String
+  consumedVolumeGB  String
+  remainingVolumeGB String
+  expirationDay     String
+  remainingTime     String
+  config            String
 }
 
 model User {
-    username String @unique
-    password String
+  username String @unique
+  password String
 }
